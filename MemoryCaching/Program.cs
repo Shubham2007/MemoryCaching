@@ -9,7 +9,10 @@ namespace MemoryCaching
 {
     class Program
     {
+        // Considering only 1 cache key
         private const string CacheKey = "availableStocks";
+
+        // Actual cache object to manage cache
         private static ObjectCache cache = MemoryCache.Default;
 
         static void Main(string[] args)
@@ -59,6 +62,10 @@ namespace MemoryCaching
             }
         }
 
+        /// <summary>
+        /// Perform action according to user input
+        /// </summary>
+        /// <param name="option"></param>
         private static void PerformActionOnSuccess(int option)
         {
             switch (option)
@@ -74,6 +81,11 @@ namespace MemoryCaching
             }
         }
 
+        /// <summary>
+        /// Validate user input
+        /// </summary>
+        /// <param name="option"></param>
+        /// <returns></returns>
         private static int ValidateOption(string option)
         {
             bool success = int.TryParse(option, out int opt);
@@ -84,6 +96,9 @@ namespace MemoryCaching
             return opt;
         }
 
+        /// <summary>
+        /// Prints menu for end user
+        /// </summary>
         private static void PrintOptions()
         {
             WriteLine("1 - GetAvailableStocks");
